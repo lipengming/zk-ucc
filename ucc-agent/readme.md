@@ -54,7 +54,7 @@
 
 2、创建新节点
     
-![DataV logo](https://github.com/cncduLee/zk-ucc/blob/master/doc/zk-create-gif)
+![DataV logo](https://github.com/cncduLee/zk-ucc/blob/master/doc/zk-create.gif)
 
 ##### 配置任务管理
 
