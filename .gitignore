@@ -1,2 +1,6 @@
 *.ibc
 *.o
+*.idea/*
+*.iml
+*/*.iml
+*/target/*
