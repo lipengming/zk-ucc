@@ -2,10 +2,12 @@
  * Copyright (c) 2014, wylipengming@jd.com|shouli1990@gmail.com. All rights reserved.
  *
  */
-package com.jdpay.cuc.test.ds;
+package com.jdpay.cuc.usage.ds;
 
 import com.jdpay.ucc.agent.ExtendDataStore;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <b>项目名</b>： ucc <br>
@@ -32,7 +34,7 @@ public class CacheDataStore implements ExtendDataStore<Map<String,String>> {
         _CACHE.put("key_words",map);
 
         Map<String,String> map1 = new HashMap<String, String>(4);
-        map1.put("a1","a1");
+        map1.put("a1", "a1");
         map1.put("a2","a2");
         map1.put("a3","a3");
         map1.put("a4","a4");

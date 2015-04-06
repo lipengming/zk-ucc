@@ -2,7 +2,7 @@
  * Copyright (c) 2014, wylipengming@jd.com|shouli1990@gmail.com. All rights reserved.
  *
  */
-package com.jdpay.cuc.test;
+package com.jdpay.cuc.usage;
 
 
 import com.jdpay.ucc.agent.Resolver;

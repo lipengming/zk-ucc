@@ -32,7 +32,7 @@
     -javaagent:cuc-agent-1.0-SNAPSHOT.jar 
 
 
-###### 扩展方式
+###### 方式三：
 除以上的启动但是外，还支持一下两种agent方式：
 
 1、启动参数
@@ -43,7 +43,59 @@
 
     -javaagent:agent.jar -DZK=localhost:2181 -DCLASS=c1,c2,c3
 
-
+### 扩展配置接入说明
+    1、定义扩展配置存储方案
+    
+    实现ExtendDataStore接口即可。例如：
+    
+    public class CacheDataStore implements ExtendDataStore<Map<String,String>> {
+        public final static Map<String,Map<String,String>> _CACHE = new HashMap<String, Map<String,String>>(10);
+        static {
+            //init value
+            Map<String,String> map = new HashMap<String, String>(4);
+            map.put("d1","d1");
+            map.put("d2","d2");
+            map.put("d3","d3");
+            map.put("d4","d4");
+            _CACHE.put("key_words",map);
+    
+            Map<String,String> map1 = new HashMap<String, String>(4);
+            map1.put("a1","a1");
+            map1.put("a2","a2");
+            map1.put("a3","a3");
+            map1.put("a4","a4");
+            _CACHE.put("key_words1",map1);
+    
+            Map<String,String> map2= new HashMap<String, String>(4);
+            map2.put("咚咚1","咚咚1");
+            map2.put("咚咚2","咚咚2");
+            map2.put("咚咚3","咚咚3");
+            map2.put("咚咚4","咚咚4");
+            _CACHE.put("key_words2",map2);
+        }
+    
+        @Override
+        public void setValue(String key, Map<String, String> map) {
+            _CACHE.put(key,map);
+        }
+    
+        @Override
+        public Map<String, String> getValue(String key) {
+            return _CACHE.get(key);
+        }
+    }
+    
+    说明：Map<String,String>为扩展配置字段的类型
+    
+    2、对扩展配置的字段注解
+    
+    @ZkTypeConfigurable(useOwnServer = false,path = "/conf/test/demo")
+    public class KeyWord {
+        @ZkExtendConfigurable(path = "keyWords",update = true,tempKey = "key_words",dataStroe = CacheDataStore.class)
+        public static Map<String,String> config = new HashMap<String, String>(0);
+    
+    }
+    
 ### console配置使用说明:
 
 ##### zk节点管理
@@ -63,9 +115,16 @@
     
 
 ## TO LIST
-  
-    1、配置管理console部分的开发
-    2、配置管理的agent部分开发
-    3、使用扩展配置的支持开发（配置信息支持扩展存储，如redis，memcached等）
-  
+    
+    一、配置管理
+    
+        1、配置管理console部分的开发
+        2、配置管理的agent部分开发
+    
+    二、注解spring扩展
+        
+    三、使用doc完善
+        
+    四、流程管理，项目管理
+        
   

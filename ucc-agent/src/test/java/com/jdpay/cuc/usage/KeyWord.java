@@ -2,13 +2,15 @@
  * Copyright (c) 2014, wylipengming@jd.com|shouli1990@gmail.com. All rights reserved.
  *
  */
-package com.jdpay.cuc.test;
+package com.jdpay.cuc.usage;
 
-import com.jdpay.cuc.test.ds.CacheDataStore;
+import com.jdpay.cuc.usage.ds.CacheDataStore;
 import com.jdpay.ucc.agent.anno.ZkExtendConfigurable;
 import com.jdpay.ucc.agent.anno.ZkTypeConfigurable;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * <b>项目名</b>： ucc <br>
  * <b>包名称</b>： com.jdpay.cuc.test <br>
