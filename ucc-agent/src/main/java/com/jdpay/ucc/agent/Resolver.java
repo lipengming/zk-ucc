@@ -22,7 +22,7 @@ import java.lang.reflect.Field;
  *
  * @version 1.0.0 <br>
  */
-public abstract class Resolver {
+public abstract class Resolver<T> {
     protected final static Logger _LOG = LoggerFactory.getLogger(Resolver.class);
 
     protected Class clazz;
@@ -38,7 +38,7 @@ public abstract class Resolver {
      *
      * @return
      */
-    public abstract String get();
+    public abstract T get();
 
     /**
      * 设置Field的值
@@ -50,9 +50,10 @@ public abstract class Resolver {
 
     protected String getStr(Class clazz,Field field){
         try {
+            field.setAccessible(true);
             return field.get(clazz).toString();//can not be (String)field.get(clazz)
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            _LOG.debug("illegal access exception..",e);
         }
         return "";
     }
@@ -62,9 +63,9 @@ public abstract class Resolver {
             field.setAccessible(true);
             field.set(clazz, value);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            _LOG.debug("illegal agreements exception..",e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            _LOG.debug("illegal access exception..",e);
         }
     }
 }

@@ -21,7 +21,7 @@ import java.lang.reflect.Field;
  *
  * @version 1.0.0 <br>
  */
-public class DefaultResolver extends Resolver {
+public class DefaultResolver extends Resolver<String> {
 
     public DefaultResolver(Class clazz, Field field) {
         super(clazz, field);
@@ -65,6 +65,6 @@ public class DefaultResolver extends Resolver {
             _LOG.info("UNKNOWN TYPE!");
             return;
         }
-        setValue(clazz,field,value);
+        setValue(clazz,field, value);
     }
 }

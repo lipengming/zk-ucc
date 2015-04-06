@@ -5,9 +5,12 @@
 package com.jdpay.cuc.test;
 
 import com.jdpay.ucc.agent.Resolver;
+import com.jdpay.ucc.agent.anno.ZkExtendConfigurable;
 import com.jdpay.ucc.agent.anno.ZkFieldConfigurable;
 import com.jdpay.ucc.agent.anno.ZkTypeConfigurable;
 import com.jdpay.ucc.agent.resover.FieldType;
+
+import java.util.HashMap;
 
 /**
  * <b>项目名</b>： ucc <br>

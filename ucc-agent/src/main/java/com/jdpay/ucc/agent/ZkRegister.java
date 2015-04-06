@@ -4,14 +4,17 @@
  */
 package com.jdpay.ucc.agent;
 
+import com.jdpay.ucc.agent.anno.ZkExtendConfigurable;
 import com.jdpay.ucc.agent.anno.ZkFieldConfigurable;
 import com.jdpay.ucc.agent.anno.ZkTypeConfigurable;
 import com.jdpay.ucc.agent.exception.ConfigureException;
 import com.jdpay.ucc.agent.listener.DataChangeListener;
 import com.jdpay.ucc.agent.operator.Updater;
 import com.jdpay.ucc.agent.resover.DefaultResolver;
+import com.jdpay.ucc.agent.resover.Notify;
 import com.jdpay.ucc.agent.utils.StringZkSerializer;
 import org.I0Itec.zkclient.ZkClient;
+import org.apache.zookeeper.Watcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,52 +70,84 @@ public class ZkRegister {
         final String path = getZkPath(root,clazz.getSimpleName());
 
         //开始遍历field
-        {
-            final Field[] fields = clazz.getDeclaredFields();
-            for(Field f : fields) {
-                if (!f.isAnnotationPresent(ZkFieldConfigurable.class)) {
-                    continue;
-                }
-                _LOG.debug("field:" + f.getName() + "type:" + f.getType().getSimpleName());
-                ZkFieldConfigurable field = f.getAnnotation(ZkFieldConfigurable.class);
-
-                String fieldPath = "".equals(field.path()) ? getZkPath(path,f.getName()) : getZkPath(path,field.path());
-                String value = zkClient.readData(fieldPath, true);
-                _LOG.debug("ZK PATH :" + fieldPath + " value:" + value);
-
-                Resolver resolver = null;
-                try {
-                    resolver = field.resolver().getConstructor(Class.class, Field.class).newInstance(clazz,f);
-                } catch (Exception e) {
-                    _LOG.debug("get resolver fail!");
-                    continue;
-                }
-
-                if(value == null && !forceWhenNull) {
-                    continue;
-                } else if(value == null && forceWhenNull) {
-                    zkClient.createPersistent(fieldPath, true);
-                    String defaultValue = resolver.get();
-                    zkClient.writeData(fieldPath, defaultValue);
-                } else {
-                    //设置值
-                    resolver.set(value);
-                }
-
-                //动态更新
-                if(field.update()) {
-                    _LOG.debug("FIELD DYNAMIC UPDATE:" + field);
-                    Updater.register(fieldPath,resolver);
-                    //zk订阅
-                    zkClient.subscribeDataChanges(fieldPath,new DataChangeListener());
-                }
-                _LOG.debug("REGISTER OK!");
+        final Field[] fields = clazz.getDeclaredFields();
+        for(Field f : fields) {
+            if (f.isAnnotationPresent(ZkFieldConfigurable.class)) {
+                commonFieldHandler(zkClient,f,path,clazz,forceWhenNull);
+                continue;
+            }
+            if (f.isAnnotationPresent(ZkExtendConfigurable.class)) {
+                extendDataHandler(zkClient,f,path,clazz,forceWhenNull);
+                continue;
             }
         }
-
     }
 
-    public String getZkPath(String parent,String pathName){
+    private void commonFieldHandler(final ZkClient zkClient,final Field f,final String path,final Class clazz,final boolean forceWhenNull){
+        _LOG.debug("field:" + f.getName() + "type:" + f.getType().getSimpleName());
+        ZkFieldConfigurable field = f.getAnnotation(ZkFieldConfigurable.class);
+
+        String fieldPath = "".equals(field.path()) ? getZkPath(path,f.getName()) : getZkPath(path,field.path());
+        String value = zkClient.readData(fieldPath, true);
+        _LOG.debug("ZK PATH :" + fieldPath + " value:" + value);
+
+        //resolver解析
+        Resolver resolver = null;
+        try {
+            resolver = field.resolver().getConstructor(Class.class, Field.class).newInstance(clazz,f);
+        } catch (Exception e) {
+            _LOG.debug("get resolver fail!");
+            return;
+        }
+        //订阅
+        subscribe(value,zkClient,fieldPath,field.update(),forceWhenNull,resolver);
+    }
+
+    private void extendDataHandler(final ZkClient zkClient,final Field f,final String path,final Class clazz,final boolean forceWhenNull){
+        _LOG.debug("field:" + f.getName() + "type:" + f.getType().getSimpleName());
+        ZkExtendConfigurable field = f.getAnnotation(ZkExtendConfigurable.class);
+        String fieldPath = "".equals(field.path()) ? getZkPath(path,f.getName()) : getZkPath(path,field.path());
+        String value = zkClient.readData(fieldPath, true);
+        _LOG.debug("ZK PATH :" + fieldPath + " value:" + value);
+
+        String tempKey = field.tempKey();
+        Class<? extends ExtendDataStore> store = field.dataStroe();
+        if(tempKey == null || store == null) {
+            return;
+        }
+        try {
+            Notify notify = new Notify(tempKey,store.newInstance(),clazz,f);
+            //订阅
+            subscribe(value,zkClient,fieldPath,forceWhenNull,field.update(),notify);
+        } catch (InstantiationException e) {
+            _LOG.debug("Instantiation Exception..",e);
+        } catch (IllegalAccessException e) {
+            _LOG.debug("Illegal Access Exception..",e);
+        }
+    }
+
+
+    private void subscribe(final String value,final ZkClient zkClient,final String fieldPath,final boolean forceWhenNull,final boolean update,final Resolver resolver){
+        if(value == null && !forceWhenNull) {
+            return;
+        } else if(value == null && forceWhenNull) {
+            zkClient.createPersistent(fieldPath, true);
+            String defaultValue = (String) resolver.get();
+            zkClient.writeData(fieldPath, defaultValue);
+        } else {
+            //设置值
+            resolver.set(value);
+        }
+
+        //动态更新
+        if(update) {
+            Updater.register(fieldPath,resolver);
+            //zk订阅
+            zkClient.subscribeDataChanges(fieldPath,new DataChangeListener());
+        }
+    }
+
+    private String getZkPath(String parent,String pathName){
         final String separator = Constant.separator;
         if (!parent.startsWith(separator)) {
             parent = separator + parent;

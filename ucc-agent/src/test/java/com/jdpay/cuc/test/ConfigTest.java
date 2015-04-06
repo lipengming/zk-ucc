@@ -21,8 +21,11 @@ package com.jdpay.cuc.test;
 public class ConfigTest {
     public static void main(String[] args) {
         while (true){
-            System.out.println("Requirments name:"+Requirements.name);
-            System.out.println("Requirments cpu:"+Requirements.cpu);
+//            System.out.println("Requirments name:"+Requirements.name);
+//            System.out.println("Requirments cpu:"+Requirements.cpu);
+
+            System.out.println("Key words :"+KeyWord.config);
+
             try {
                 Thread.sleep(2000L);
             } catch (InterruptedException e) {

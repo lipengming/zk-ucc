@@ -4,9 +4,9 @@
  */
 package com.jdpay.ucc.agent.anno;
 
-import com.jdpay.ucc.agent.Notify;
-import com.jdpay.ucc.agent.Resolver;
-import com.jdpay.ucc.agent.resover.DefaultResolver;
+import com.jdpay.ucc.agent.ExtendDataStore;
+import com.jdpay.ucc.agent.resover.Notify;
+import com.jdpay.ucc.agent.resover.RedisExtendDataStore;
 
 import java.lang.annotation.*;
 
@@ -27,7 +27,7 @@ import java.lang.annotation.*;
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface ZkNotifyConfigurable {
+public @interface ZkExtendConfigurable {
     /**
      * 该配置在zk上面的节点路径（node path）
      * 缺省按照一下规则：
@@ -46,9 +46,15 @@ public @interface ZkNotifyConfigurable {
     boolean update() default true;
 
     /**
-     * 用于指定 版本变更时接收通知，并且处理的 类
+     * 扩展配置的地址信息，用于找到真正的配置信息，存储在zookeeper上
+     * @return
+     */
+    String tempKey();
+
+    /**
+     * 用于实现扩展存储数据操作的类,默认给出redis的操作方案（应该是不给出，并且不许指定的项）
      *
      * @return
      */
-    Class<? extends Notify> notification() default Notify.class;
+    Class<? extends ExtendDataStore> dataStroe() default RedisExtendDataStore.class;
 }
