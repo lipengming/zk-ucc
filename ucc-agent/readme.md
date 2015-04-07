@@ -5,7 +5,7 @@
 由agent和console组成
 
     agent:作为基础jar包，被接入程序使用
-    console:后台运营、关联、配置的地方
+    console:后台运营、管理、配置的地方
 
 ### agent接入说明:
 提供三种接入方式
