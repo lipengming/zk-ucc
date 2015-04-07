@@ -20,6 +20,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.wangyin</groupId>
+            <artifactId>wangyin-commons</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.29</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jdpay.ucc</groupId>
+            <artifactId>ucc-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
             <version>0.4</version>

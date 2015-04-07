@@ -37,23 +37,26 @@ public class Result implements Serializable {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public Result setSuccess(boolean success) {
         this.success = success;
+        return this;
     }
 
     public String getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public Result setCode(String code) {
         this.code = code;
+        return this;
     }
 
     public Object getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public Result setData(Object data) {
         this.data = data;
+        return this;
     }
 }

@@ -19,5 +19,11 @@ package com.jdpay.ucc.console.utils;
  */
 public interface Constant {
     public final static String _ZK_SERVERS = Config._CONFIG.get("zk.servers");
-    public final static int _ZK_TIMEOUT = Integer.parseInt(Config._CONFIG.get("zk.timeout"));
+    public final static int    _ZK_TIMEOUT = Integer.parseInt(Config._CONFIG.get("zk.timeout"));
+
+    //db
+    public final static String DRIVER   = "jdbc.driver";
+    public final static String URL      = "jdbc.url";
+    public final static String USERNAME = "jdbc.username";
+    public final static String PASSWORD = "jdbc.password";
 }

@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
  * @version 1.0.0 <br>
  */
 @Path("/node")
+@Deprecated
 public class BaseController {
     private static Logger logger = Logger.getLogger(BaseController.class);
     private static AtomicInteger index = new AtomicInteger(1);

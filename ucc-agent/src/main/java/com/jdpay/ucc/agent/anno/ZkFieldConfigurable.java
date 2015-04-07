@@ -51,11 +51,4 @@ public @interface ZkFieldConfigurable {
      * @return
      */
     Class<? extends Resolver> resolver() default DefaultResolver.class;
-
-    /**
-     * 用于实现扩展存储数据操作的类,默认给出redis的操作方案（应该是不给出，并且不许指定的项）
-     *
-     * @return
-     */
-    Class<? extends ExtendDataStore> dataStore() default RedisExtendDataStore.class;
 }
