@@ -10,6 +10,7 @@ import com.jdpay.ucc.console.db.map.AppRow;
 import com.jdpay.ucc.console.db.map.ConfigFieldRowMap;
 import com.jdpay.ucc.console.db.map.ConfigTypeRowMap;
 import com.jdpay.ucc.console.pojo.Result;
+import com.jdpay.ucc.core.dto.App;
 import com.jdpay.ucc.core.dto.ConfigField;
 import com.jdpay.ucc.core.dto.ConfigType;
 import org.slf4j.Logger;
@@ -66,21 +67,33 @@ public class ConfigController {
     @GET
     @Path("/appList")
     @Produces({MediaType.APPLICATION_JSON})
-    public Result addApp(){
+    public Result listApp(){
         _LOG.info("GET APP LIST INFO :" );
-        List<ConfigType> list = db.queryForList("select * from tb_app",new AppRow());
+        List<App> list = db.queryForList("select * from tb_app",new AppRow());
         return new Result(true).setData(list);
     }
 
-    @GET
+    @POST
     @Path("/addService")
     @Produces({MediaType.APPLICATION_JSON})
     public Result addService(@FormParam("serviceName") String serviceName,
-                             @FormParam("serviceType") String serviceType){
+                             @FormParam("serviceType") String serviceType,
+                             @FormParam("useOwnServers") String useOwnServers,
+                             @FormParam("servers") String servers,
+                             @FormParam("path") String path,
+                             @FormParam("aid") String aid){
         _LOG.info("ADD SERVICE INFO BY:" + serviceName);
-        return db.executeSQL("insert into tb_app(appName,description) values (?,?)",serviceName,serviceType) > 0 ? new Result(true) : new Result(false);
+        return db.executeSQL("insert into tb_service(aid,serviceName,serviceType,path,servers,useOwnServers) values (?,?,?,?,?,?)",aid,serviceName,serviceType,path,servers,useOwnServers) > 0 ? new Result(true) : new Result(false);
     }
 
+    @GET
+    @Path("/serviceList")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Result listService(@QueryParam("appId") long appId){
+        _LOG.info("GET APP LIST INFO :" );
+        List<ConfigType> list = db.queryForList("select * from tb_service where aid=?",new ConfigTypeRowMap(),appId);
+        return new Result(true).setData(list);
+    }
 
     @GET
     @Path("/addField")

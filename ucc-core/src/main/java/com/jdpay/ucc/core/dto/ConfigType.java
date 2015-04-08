@@ -21,7 +21,7 @@ import java.util.List;
  * @version 1.0.0 <br>
  */
 public class ConfigType extends BasrDto {
-    private String appName;
+    private Long appId;
     private String serviceName;
     private String serviceType;
     private String path;
@@ -29,17 +29,16 @@ public class ConfigType extends BasrDto {
     private boolean useOwnServers;
     private List<ConfigField> configFields;
 
-
-    public ConfigType(String appName) {
-        this.appName = appName;
+    public ConfigType(Long appId) {
+        this.appId = appId;
     }
 
-    public String getAppName() {
-        return appName;
+    public Long getAppId() {
+        return appId;
     }
 
-    public void setAppName(String appName) {
-        this.appName = appName;
+    public void setAppId(Long appId) {
+        this.appId = appId;
     }
 
     public String getServiceName() {

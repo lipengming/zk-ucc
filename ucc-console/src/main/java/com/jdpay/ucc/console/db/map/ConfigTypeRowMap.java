@@ -26,12 +26,15 @@ import java.sql.SQLException;
 public class ConfigTypeRowMap implements IRowMap<ConfigType> {
     @Override
     public ConfigType mapRow(ResultSet rs) throws SQLException {
-        ConfigType configType = new ConfigType(rs.getString("appName"));
+        ConfigType configType = new ConfigType(rs.getLong("aid"));
+
         configType.setPath(rs.getString("path"));
         configType.setServiceName(rs.getString("serviceName"));
         configType.setServiceType(rs.getString("serviceType"));
         configType.setUseOwnServers(BooleanType.valueOf(rs.getString("useOwnServers")));
         configType.setId(rs.getLong("id"));
+        configType.setServers(rs.getString("servers"));
+
         return configType;
     }
 }

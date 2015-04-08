@@ -299,7 +299,118 @@
 
                 <div class="span12">
 
+                    <div class="tabbable tabbable-custom boxless">
 
+                        <ul class="nav nav-tabs">
+
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Service管理</a></li>
+
+                            <li><a href="#tab_2" data-toggle="tab">新增Service配置</a></li>
+
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div id="tab_1" class="tab-pane active">
+                                <div class="alert alert-success alert-dismissable hide" id="show-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&nbsp;</button>添加成功
+                                </div>
+                                <div class="alert alert-error  alert-dismissable hide" id="show-error">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&nbsp;</button>添加失败
+                                </div>
+                                <div class="portlet box blue">
+                                    <div class="portlet-title">
+                                        <div class="caption" style="color:black;"><i class="icon-reorder"></i></div>
+                                    </div>
+                                    <div class="portlet-body ">
+                                        <select id="select_app" name="select_app">
+                                        </select>
+                                        <table class="table">
+                                            <thead>
+                                                    <tr>
+                                                        <td>应用名称</td>
+                                                        <td>服务名称</td>
+                                                        <td>服务类型（class）</td>
+                                                        <td>zk地址（path）</td>
+                                                        <td>服务地址（servers）</td>
+                                                        <td>是否使用自定义</td>
+                                                        <td>操作</td>
+                                                    </tr>
+                                            </thead>
+                                            <tbody id="service_list">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--add service-->
+                            <div id="tab_2" class="tab-pane ">
+                                <div class="alert alert-success alert-dismissable hide" id="add-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&nbsp;</button>添加成功
+                                </div>
+                                <div class="alert alert-error  alert-dismissable hide" id="add-error">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&nbsp;</button>添加失败
+                                </div>
+                                <div class="portlet box blue">
+                                    <div class="portlet-title">
+                                        <div class="caption"><i class="icon-reorder"></i></div>
+                                    </div>
+
+                                    <div class="portlet-body form">
+                                        <form class="form-horizontal form-row-seperated" method="post" action="./zookeeper-create">
+                                            <div class="control-group">
+                                                <label class="control-label">应用名:</label>
+                                                <div class="controls">
+                                                    <input class="m-wrap span8 " type="text" id="appName" name="appName" >
+                                                    <span class="help-inline">请在左边panel选择</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label">服务名称</label>
+                                                <div class="controls">
+                                                    <input class="m-wrap span8 " type="text" id="serviceName" name="serviceName" placeholder="请输入">
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">服务类型</label>
+                                                <div class="controls">
+                                                    <input class="m-wrap span8 " type="text" id="serviceType" name="serviceType" placeholder="请输入">
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">服务zk路径</label>
+                                                <div class="controls">
+                                                    <input class="m-wrap span8 " type="text" id="path" name="path" placeholder="请输入">
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">服务zk地址</label>
+                                                <div class="controls">
+                                                    <input class="m-wrap span8 " type="text" id="services" name="services" placeholder="请输入">
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">是否使用当前配置</label>
+                                                <div class="controls">
+                                                    <input class="m-wrap span8 " type="radio"  name="useOwnServers" value="1" checked/>是
+                                                    <input class="m-wrap span8 " type="radio"  name="useOwnServers" value="0"/>否
+                                                </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="button" class="btn blue" onclick="create_service();"><i class="icon-ok"></i>保存</button>
+                                                <button type="button" class="btn">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
