@@ -12,6 +12,7 @@
         <module>ucc-agent</module>
         <module>ucc-core</module>
         <module>ucc-console</module>
+        <module>ucc-spring</module>
     </modules>
 
     <properties>
