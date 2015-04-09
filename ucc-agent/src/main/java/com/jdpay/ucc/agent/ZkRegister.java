@@ -10,17 +10,13 @@ import com.jdpay.ucc.agent.anno.ZkTypeConfigurable;
 import com.jdpay.ucc.agent.exception.ConfigureException;
 import com.jdpay.ucc.agent.listener.DataChangeListener;
 import com.jdpay.ucc.agent.operator.Updater;
-import com.jdpay.ucc.agent.resover.DefaultResolver;
-import com.jdpay.ucc.agent.resover.Notify;
+import com.jdpay.ucc.agent.resover.ExtendResolver;
 import com.jdpay.ucc.agent.utils.StringZkSerializer;
 import org.I0Itec.zkclient.ZkClient;
-import org.apache.zookeeper.Watcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -116,9 +112,9 @@ public class ZkRegister {
             return;
         }
         try {
-            Notify notify = new Notify(tempKey,store.newInstance(),clazz,f);
+            ExtendResolver extendResolver = new ExtendResolver(tempKey,store.newInstance(),clazz,f);
             //订阅
-            subscribe(value,zkClient,fieldPath,forceWhenNull,field.update(),notify);
+            subscribe(value,zkClient,fieldPath,forceWhenNull,field.update(), extendResolver);
         } catch (InstantiationException e) {
             _LOG.debug("Instantiation Exception..",e);
         } catch (IllegalAccessException e) {

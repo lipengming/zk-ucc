@@ -19,6 +19,7 @@ import com.jdpay.ucc.agent.ExtendDataStore;
  *
  * @version 1.0.0 <br>
  */
+@Deprecated
 public class RedisExtendDataStore implements ExtendDataStore {
     @Override
     public void setValue(String key, Object o) {

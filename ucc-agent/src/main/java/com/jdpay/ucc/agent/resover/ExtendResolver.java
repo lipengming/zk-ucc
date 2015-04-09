@@ -24,17 +24,17 @@ import java.lang.reflect.Field;
  *
  * @version 1.0.0 <br>
  */
-public class Notify<T> extends Resolver<T> {
-    protected final static Logger _LOG = LoggerFactory.getLogger(Notify.class);
+public class ExtendResolver<T> extends Resolver<T> {
+    protected final static Logger _LOG = LoggerFactory.getLogger(ExtendResolver.class);
 
     private String tempKey;
     private ExtendDataStore<T> store;
 
-    public Notify(Class clazz, Field field) {
+    public ExtendResolver(Class clazz, Field field) {
         super(clazz, field);
     }
 
-    public Notify(String tempKey, ExtendDataStore<T> store, Class clazz, Field field) {
+    public ExtendResolver(String tempKey, ExtendDataStore<T> store, Class clazz, Field field) {
         super(clazz,field);
         this.tempKey = tempKey;
         this.store = store;

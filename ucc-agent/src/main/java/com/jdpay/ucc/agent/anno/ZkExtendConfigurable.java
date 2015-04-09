@@ -5,7 +5,6 @@
 package com.jdpay.ucc.agent.anno;
 
 import com.jdpay.ucc.agent.ExtendDataStore;
-import com.jdpay.ucc.agent.resover.Notify;
 import com.jdpay.ucc.agent.resover.RedisExtendDataStore;
 
 import java.lang.annotation.*;
