@@ -4,8 +4,6 @@
  */
 package com.jdpay.ucc.agent;
 
-import com.google.gson.Gson;
-import com.jdpay.ucc.core.dto.ConfigType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +15,6 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,7 +45,7 @@ public final class Config {
     private static final String _BASE_URL = "";
 
     public static final String APP_NAME;
-    public static final AppConfig _APP_CONF;
+    //public static final AppConfig _APP_CONF;
 
     static {
         String appName = System.getProperty("app.name",System.getenv("APP_NAME"));
@@ -57,7 +54,7 @@ public final class Config {
             _LOG.error("CAN'T GET APP_NAME!");
         }
         APP_NAME = appName;
-        _APP_CONF = getAppConfig();
+        //_APP_CONF = getAppConfig();
     }
 
 
@@ -201,12 +198,12 @@ public final class Config {
         return null;
     }
 
-    public static AppConfig getAppConfig() {
-        AppConfig app = new AppConfig();
-        app.appName = APP_NAME;
-        app.type = resole(request());
-        return app;
-    }
+//    public static AppConfig getAppConfig() {
+//        AppConfig app = new AppConfig();
+//        app.appName = APP_NAME;
+//        app.type = resole(request());
+//        return app;
+//    }
 
     private static String request() {
         BufferedReader reader = null;
@@ -258,13 +255,13 @@ public final class Config {
         return null;
     }
 
-    private static List<ConfigType> resole(String json) {
-        if(json == null){}
-        return new ArrayList<ConfigType>(0);
-    }
-
-    static class AppConfig {
-        List<ConfigType> type;
-        String appName;
-    }
+//    private static List<ConfigType> resole(String json) {
+//        if(json == null){}
+//        return new ArrayList<ConfigType>(0);
+//    }
+//
+//    static class AppConfig {
+//        List<ConfigType> type;
+//        String appName;
+//    }
 }

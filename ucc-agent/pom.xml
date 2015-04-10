@@ -20,11 +20,11 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.jdpay.ucc</groupId>
-            <artifactId>ucc-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.jdpay.ucc</groupId>-->
+            <!--<artifactId>ucc-core</artifactId>-->
+            <!--<version>${project.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
