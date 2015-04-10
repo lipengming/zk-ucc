@@ -33,11 +33,22 @@ public abstract class Agent {
         }
         final ZkRegister register = ZkRegisterFactory.getZkRegister(servers);
         for(String clzStr : clazzes) {
-            try {
-                register.register(Class.forName(clzStr),true);
-            }catch (ClassNotFoundException e) {
-                //TODO
+            Class clazz = getClass(clzStr,2);//循环取三次
+            if(clazz != null) {
+                register.register(clazz,true);
             }
+        }
+    }
+
+    private static Class getClass(String clzStr,int time) {
+        try {
+            if(time < 1) return null;
+            return Class.forName(clzStr);
+        } catch (ClassNotFoundException e) {
+            try {
+                Thread.sleep(1000L);
+            } catch (InterruptedException e1) {}
+            return getClass(clzStr,time--);
         }
     }
 }
