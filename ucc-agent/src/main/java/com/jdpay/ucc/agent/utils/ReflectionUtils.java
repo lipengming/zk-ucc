@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
+ *
+ * Copy from spring-utils version:3.8
+ *
  * Simple utility class for working with the reflection API and handling
  * reflection exceptions.
  *
