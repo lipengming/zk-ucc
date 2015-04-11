@@ -4,6 +4,7 @@
  */
 package com.jdpay.ucc.agent;
 
+import com.jdpay.ucc.agent.utils.ReflectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +51,7 @@ public abstract class Resolver<T> {
 
     protected String getStr(Class clazz,Field field){
         try {
-            field.setAccessible(true);
+            ReflectionUtils.makeAccessible(field);
             return field.get(clazz).toString();//can not be (String)field.get(clazz)
         } catch (IllegalAccessException e) {
             _LOG.debug("illegal access exception..",e);
@@ -60,7 +61,7 @@ public abstract class Resolver<T> {
 
     protected void setValue(Class clazz,Field field,Object value) {
         try {
-            field.setAccessible(true);
+            ReflectionUtils.makeAccessible(field);
             field.set(clazz, value);
         } catch (IllegalArgumentException e) {
             _LOG.debug("illegal agreements exception..",e);

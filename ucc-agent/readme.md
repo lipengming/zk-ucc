@@ -6,6 +6,48 @@
 
     agent:作为基础jar包，被接入程序使用
     console:后台运营、管理、配置的地方
+    
+### spring接入说明:
+##### 第一步
+    
+    添加mvn依赖：
+    
+    <dependency>
+        <groupId>com.jdpay.ucc</groupId>
+        <artifactId>ucc-spring</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+##### 第二步
+    
+    配置xml方式：
+    
+            <!--annotation扫描-->
+            <context:component-scan base-package="com.jdpay.ucc.spring.usage" />
+            <context:annotation-config/>
+        
+            <!--声明支持扩展的annotation配置-->
+            <bean class="com.jdpay.ucc.spring.ConfigAnnotationBeanPostProcessor">
+                <constructor-arg index="0" value="${zk.servers}"/>
+                <constructor-arg index="1" value="${zk.forceWhenNull}"/>
+            </bean>
+    
+##### 第三步
+    spring接入实例   
+    
+    @Service("kw")
+    @ZkTypeConfigurable(useOwnServer = false,path = "/conf/test/demo")
+    public class KeyWord implements Config {
+        @ZkExtendConfigurable(path = "keyWords",update = true,tempKey = "key_words",dataStroe = CacheDataStore.class)
+        public static Map<String,String> config = new HashMap<String, String>(0);
+    
+        @Override
+        public void print() {
+            System.out.println(config);
+        }
+    }
+
+
 
 ### agent接入说明:
 提供三种接入方式
@@ -120,11 +162,13 @@
     
         1、配置管理console部分的开发
         2、配置管理的agent部分开发
+            
+    二、使用doc完善
+        
+    三、流程管理，项目管理
     
-    二、注解spring扩展
-        
-    三、使用doc完善
-        
-    四、流程管理，项目管理
+    四、细节调优
+    
+    无、异常方案
         
   

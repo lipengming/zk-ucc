@@ -24,7 +24,7 @@ public interface ExtendDataStore<T> {
      * @param key       扩展存储存储位置
      * @param t         值
      */
-    public abstract void setValue(String key,T t);
+    public void setValue(String key,T t);
 
     /**
      * 从扩展存储中获取值
@@ -32,5 +32,5 @@ public interface ExtendDataStore<T> {
      * @param key       扩展存储存储位置
      * @return
      */
-    public abstract T getValue(String key);
+    public T getValue(String key);
 }
