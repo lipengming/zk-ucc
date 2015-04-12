@@ -95,7 +95,7 @@ public class ConfigController {
         return new Result(true).setData(list);
     }
 
-    @GET
+    @POST
     @Path("/addField")
     @Produces({MediaType.APPLICATION_JSON})
     public Result addField(@FormParam("appName") String appName,
@@ -104,4 +104,13 @@ public class ConfigController {
         return db.executeSQL("insert into tb_app(appName,description) values (?,?)",appName,description) > 0 ? new Result(true) : new Result(false);
     }
 
+    @GET
+    @Path("/listField")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Result listField(@QueryParam("appId") long appId,
+                            @QueryParam("serviceId") long serviceId){
+        _LOG.info("GET FIELD INFO BY: AID:" + appId + "SID:" + serviceId);
+        List<ConfigField> list = db.queryForList("select f.* tb_app a,tb_service s,tb_field f where a.id=s.aid and s.id=f.sid",new ConfigFieldRowMap(),appId,serviceId);
+        return new Result(true).setData(list);
+    }
 }
