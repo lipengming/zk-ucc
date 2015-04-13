@@ -4,9 +4,9 @@
  */
 package com.jdpay.ucc.console.db;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.jdpay.ucc.console.utils.Config;
 import com.jdpay.ucc.console.utils.Constant;
-import com.wangyin.commons.cp.WangyinCPDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,22 +28,23 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
     private final static Logger logger = LoggerFactory.getLogger(DBManager.class);
-    public final static WangyinCPDataSource dataSource ;
+    public final static DruidDataSource ds = new DruidDataSource();
 
     static {
-        dataSource = new WangyinCPDataSource();
-        dataSource.setDriver(Config._CONFIG.get(Constant.DRIVER));
-        dataSource.setUrl(Config._CONFIG.get(Constant.URL));
-        dataSource.setUsername(Config._CONFIG.get(Constant.USERNAME));
-        dataSource.setPassword(Config._CONFIG.get(Constant.PASSWORD));
-        dataSource.setMinConnections(1);
-        dataSource.setMaxConnections(5);
-        dataSource.setCheckoutTimeoutMilliSec(3000L);
+        ds.setDriverClassName(Config._CONFIG.get(Constant.DRIVER));
+        ds.setUsername(Config._CONFIG.get(Constant.USERNAME));
+        ds.setPassword(Config._CONFIG.get(Constant.PASSWORD));
+        ds.setUrl(Config._CONFIG.get(Constant.URL));
+        ds.setInitialSize(40); // 初始的连接数；
+        ds.setMaxActive(40);
+        ds.setMaxIdle(40);
+        ds.setMinIdle(10);
+        ds.setMaxWait(5);
     }
 
     public static Connection getConnection(){
         try {
-            return dataSource.getConnection();
+            return ds.getConnection();
         } catch (SQLException e) {
             logger.debug("get connections error!",e);
             return null;
