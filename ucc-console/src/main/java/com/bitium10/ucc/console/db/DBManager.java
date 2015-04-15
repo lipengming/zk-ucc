@@ -19,7 +19,7 @@ import java.util.List;
  *                 例如：测试用例完成后，需要清理现场，这样的场合就可以直接写sql来搞定。
  *                 示例：参考测试代码：DBManagerTest.java
  *                 说明：所有此类中的一次，均打印出堆栈，方便找到错误
- * <b>创建人</b>： <a href="mailto:wylipengming@chinabank.com.cn">李朋明</a> <br>
+ * <b>创建人</b>： <a href="mailto:shouli1990@gmail.com">李朋明</a> <br>
  * <b>修改人</b>： <br>
  * <b>创建时间</b>：2014/12/17 11:01
  * <b>修改时间</b>： <br>
