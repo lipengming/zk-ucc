@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  * <b>项目名</b>： wallet-customer <br>
- * <b>包名称</b>： com.wangyin.customer.common <br>
+ * <b>包名称</b>： com.shouli1990@gmail.com.customer.common <br>
  * <b>类名称</b>： IRowMap <br>
  * <b>类描述</b>： <br>
  * <b>创建人</b>： <a href="mailto:shouli1990@gmail.com">李朋明</a> <br>
