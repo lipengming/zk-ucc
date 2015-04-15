@@ -2,16 +2,16 @@
  * Copyright (c) 2014, shouli1990@gmail.com|shouli1990@gmail.com. All rights reserved.
  *
  */
-package com.jdpay.ucc.spring.usage.ds;
+package com.bitium10.ucc.spring.usage.ds;
 
-import com.jdpay.ucc.agent.ExtendDataStore;
+import com.bitium10.ucc.agent.ExtendDataStore;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * <b>项目名</b>： ucc <br>
- * <b>包名称</b>： com.jdpay.cuc.test.ds <br>
+ * <b>包名称</b>： com.bitium10.cuc.test.ds <br>
  * <b>类名称</b>： CacheDataStore <br>
  * <b>类描述</b>： <br>
  * <b>创建人</b>： <a href="mailto:shouli1990@gmail.com">李朋明</a> <br>

@@ -11,7 +11,7 @@
 
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>com.jdpay.ucc.console</param-value>
+            <param-value>com.bitium10.ucc.console</param-value>
         </init-param>
 
         <init-param>

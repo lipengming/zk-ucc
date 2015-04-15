@@ -2,7 +2,7 @@
  * Copyright (c) 2014, shouli1990@gmail.com|shouli1990@gmail.com. All rights reserved.
  *
  */
-package com.jdpay.ucc.spring.usage;
+package com.bitium10.ucc.spring.usage;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * <b>项目名</b>： ucc <br>
- * <b>包名称</b>： com.jdpay.ucc.spring.usage <br>
+ * <b>包名称</b>： com.bitium10.ucc.spring.usage <br>
  * <b>类名称</b>： SpringAnnotationTest <br>
  * <b>类描述</b>： <br>
  * <b>创建人</b>： <a href="mailto:shouli1990@gmail.com">李朋明</a> <br>

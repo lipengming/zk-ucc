@@ -2,12 +2,12 @@
  * Copyright (c) 2014, shouli1990@gmail.com|shouli1990@gmail.com. All rights reserved.
  *
  */
-package com.jdpay.cuc.usage;
+package com.bitium10.cuc.usage;
 
 
 /**
  * <b>项目名</b>： ucc <br>
- * <b>包名称</b>： com.jdpay.cuc.test <br>
+ * <b>包名称</b>： com.bitium10.cuc.test <br>
  * <b>类名称</b>： ConfigTest <br>
  * <b>类描述</b>： <br>
  * <b>创建人</b>： <a href="mailto:shouli1990@gmail.com">李朋明</a> <br>

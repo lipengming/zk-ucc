@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <artifactId>ucc</artifactId>
-        <groupId>com.jdpay.ucc</groupId>
+        <groupId>com.bitium10.ucc</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -30,7 +30,7 @@
             <version>5.1.29</version>
         </dependency>
         <dependency>
-            <groupId>com.jdpay.ucc</groupId>
+            <groupId>com.bitium10.ucc</groupId>
             <artifactId>ucc-core</artifactId>
         </dependency>
         <dependency>

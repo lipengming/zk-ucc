@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Premain-Class: com.jdpay.ucc.agent.agent.ZkAgentMain
+Premain-Class: com.bitium10.ucc.agent.agent.ZkAgentMain
 Can-Set-Native-Method-Prefix: false
 Can-Redefine-Classes: true
 Can-Retransform-Classes: true

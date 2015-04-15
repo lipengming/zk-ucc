@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jdpay.ucc</groupId>
+    <groupId>com.bitium10.ucc</groupId>
     <artifactId>ucc</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -65,17 +65,17 @@
                 <version>${zookeeper-version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdpay.ucc</groupId>
+                <groupId>com.bitium10.ucc</groupId>
                 <artifactId>ucc-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdpay.ucc</groupId>
+                <groupId>com.bitium10.ucc</groupId>
                 <artifactId>cuc-agent</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdpay.ucc</groupId>
+                <groupId>com.bitium10.ucc</groupId>
                 <artifactId>cuc-monitor</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -26,7 +26,7 @@
     添加mvn依赖：
     
     <dependency>
-        <groupId>com.jdpay.ucc</groupId>
+        <groupId>com.bitium10.ucc</groupId>
         <artifactId>ucc-spring</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
@@ -36,11 +36,11 @@
     配置xml方式：
     
             <!--annotation扫描-->
-            <context:component-scan base-package="com.jdpay.ucc.spring.usage" />
+            <context:component-scan base-package="com.bitium10.ucc.spring.usage" />
             <context:annotation-config/>
         
             <!--声明支持扩展的annotation配置-->
-            <bean class="com.jdpay.ucc.spring.ConfigAnnotationBeanPostProcessor">
+            <bean class="com.bitium10.ucc.spring.ConfigAnnotationBeanPostProcessor">
                 <constructor-arg index="0" value="${zk.servers}"/>
                 <constructor-arg index="1" value="${zk.forceWhenNull}"/>
             </bean>
@@ -92,7 +92,7 @@
 
 1、启动参数
     
-    -javaagent:agent.jar=zk@localhost:2181#class@com.jdpay.ucc.Demo
+    -javaagent:agent.jar=zk@localhost:2181#class@com.bitium10.ucc.Demo
     
 2、jvm环境变量
 

@@ -1,8 +1,8 @@
-package com.jdpay.ucc.spring.usage;
+package com.bitium10.ucc.spring.usage;
 
-import com.jdpay.ucc.agent.anno.ZkExtendConfigurable;
-import com.jdpay.ucc.agent.anno.ZkTypeConfigurable;
-import com.jdpay.ucc.spring.usage.ds.CacheDataStore;
+import com.bitium10.ucc.agent.anno.ZkExtendConfigurable;
+import com.bitium10.ucc.agent.anno.ZkTypeConfigurable;
+import com.bitium10.ucc.spring.usage.ds.CacheDataStore;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
