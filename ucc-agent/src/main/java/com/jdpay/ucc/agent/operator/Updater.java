@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014, wylipengming@jd.com|shouli1990@gmail.com. All rights reserved.
+ * Copyright (c) 2014, shouli1990@gmail.com|shouli1990@gmail.com. All rights reserved.
  *
  */
 package com.jdpay.ucc.agent.operator;
@@ -17,7 +17,7 @@ import java.util.WeakHashMap;
  * <b>包名称</b>： com.jdpay.ucc.agent.operator <br>
  * <b>类名称</b>： Updater <br>
  * <b>类描述</b>： <br>
- * <b>创建人</b>： <a href="mailto:wylipengming@jd.com">李朋明</a> <br>
+ * <b>创建人</b>： <a href="mailto:shouli1990@gmail.com">李朋明</a> <br>
  * <b>修改人</b>： <br>
  * <b>创建时间</b>：2015/4/2 21:03<br>
  * <b>修改时间</b>： <br>

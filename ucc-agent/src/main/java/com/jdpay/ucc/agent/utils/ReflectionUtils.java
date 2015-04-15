@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014, wylipengming@jd.com|shouli1990@gmail.com. All rights reserved.
+ * Copyright (c) 2014, shouli1990@gmail.com|shouli1990@gmail.com. All rights reserved.
  *
  */
 package com.jdpay.ucc.agent.utils;
