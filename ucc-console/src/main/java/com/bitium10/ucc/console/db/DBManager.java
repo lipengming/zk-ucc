@@ -15,10 +15,7 @@ import java.util.List;
  * <b>项目名</b>： ucc <br>
  * <b>包名称</b>： com.shouli1990@gmail. <br>
  * <b>类名称</b>： DBManager <br>
- * <b>类描述</b>： 由于测试过程中，部分数据库操作没有现成的接口，所以，可以使用jdbc直接操作<br>
- *                 例如：测试用例完成后，需要清理现场，这样的场合就可以直接写sql来搞定。
- *                 示例：参考测试代码：DBManagerTest.java
- *                 说明：所有此类中的一次，均打印出堆栈，方便找到错误
+ * <b>类描述</b>：
  * <b>创建人</b>： <a href="mailto:shouli1990@gmail.com">李朋明</a> <br>
  * <b>修改人</b>： <br>
  * <b>创建时间</b>：2014/12/17 11:01
