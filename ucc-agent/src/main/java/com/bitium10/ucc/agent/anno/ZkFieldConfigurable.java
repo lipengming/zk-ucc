@@ -4,10 +4,8 @@
  */
 package com.bitium10.ucc.agent.anno;
 
-import com.bitium10.ucc.agent.ExtendDataStore;
 import com.bitium10.ucc.agent.Resolver;
 import com.bitium10.ucc.agent.resover.DefaultResolver;
-import com.bitium10.ucc.agent.resover.RedisExtendDataStore;
 
 import java.lang.annotation.*;
 

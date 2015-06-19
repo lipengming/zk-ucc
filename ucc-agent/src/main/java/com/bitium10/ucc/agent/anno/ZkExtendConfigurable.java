@@ -5,7 +5,6 @@
 package com.bitium10.ucc.agent.anno;
 
 import com.bitium10.ucc.agent.ExtendDataStore;
-import com.bitium10.ucc.agent.resover.RedisExtendDataStore;
 
 import java.lang.annotation.*;
 
@@ -55,5 +54,5 @@ public @interface ZkExtendConfigurable {
      *
      * @return
      */
-    Class<? extends ExtendDataStore> dataStroe() default RedisExtendDataStore.class;
+    Class<? extends ExtendDataStore> dataStroe() ;
 }
