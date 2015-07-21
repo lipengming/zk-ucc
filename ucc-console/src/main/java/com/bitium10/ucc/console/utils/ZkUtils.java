@@ -40,6 +40,21 @@ public class ZkUtils {
         return node;
     }
 
+    public static Node getCurrentNode(ZkClient client,String path){
+        Node node = getNode(client,path);
+        List<String> childes = client.getChildren(path);
+        List<Node> list = new ArrayList<Node>(childes.size());
+        for(String child : childes) {
+            try {
+                list.add(getNode(client, getPath(path, child)));
+            }catch (Exception e){
+                continue;
+            }
+        }
+        node.setChildren(list);
+        return node;
+    }
+
     public static Node getNode(ZkClient client,String path) {
         try {
             return new Node(path,(String)client.readData(path,true),path.substring(path.lastIndexOf("/") + 1));

@@ -39,7 +39,7 @@ public class ZkController {
     @Path("list")
     @Produces({MediaType.APPLICATION_JSON})
     public Node getAllNodes() {
-        return ZkUtils.getNodeRecursive(getZkClient(), "/");
+        return ZkUtils.getCurrentNode(getZkClient(), "/");
     }
 
     @GET
